@@ -3,7 +3,11 @@ This is a local deployment to serve the Github Pages app of [zaefe.github.io/cli
 
 ## Architecture
 
-TBD
+- Requests to `http://localhost:8081` get routed to the `fp-svc` which has a webserver on port `7901`
+    - For `http://fp-svc:7901/`, the container proxies to `http://hp-svc:6969/`
+    - For `http://fp-svc:7901/client-side-demos`, the container serves the pages site stored inside the image at `/usr/share/nginx/html` (this came from a Git repo)
+    - The `hp-svc` serves a landing page on port `6969` that comes from a volume and has a link to `http://localhost:8081/client-side-demos/`
+
 
 ## Prerequisites
 
@@ -23,6 +27,10 @@ TBD
     ./scripts/init.sh;
     ```
 2. To up the compose stack:
-    TBD
+    ```bash
+    docker compose up -d
+    ```
 3. Down the compose stack:
-    TBD
+    ```bash
+    docker compose down
+    ```
