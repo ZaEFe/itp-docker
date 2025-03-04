@@ -26,11 +26,13 @@ This is a local deployment to serve run server-side PHP scripts integrated with 
     chmod +x scripts/init.sh;
     ./scripts/init.sh;
     ```
-2. To up the compose stack:
+2. Some manual changes TB Documented
+
+3. To up the compose stack:
     ```bash
     docker compose up -d
     ```
-3. To down the compose stack:
+4. To down the compose stack:
     ```bash
     docker compose down;
     ```
