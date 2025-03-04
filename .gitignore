@@ -1,8 +1,1 @@
-*
-#Except the following
-!/.gitignore
-!/docker-compose.yaml
-!/README.md
-!/scripts/
-scripts/*
-!/scripts/init.sh
+volumes
