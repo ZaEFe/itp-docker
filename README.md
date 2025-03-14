@@ -1,13 +1,13 @@
 # Docker Static App Deployment
 
 
-This is a local deployment to serve run server-side PHP scripts integrated with an NGINX webserver.
+This is a local deployment to run server-side PHP scripts integrated with an NGINX webserver.
 
 
 ## Architecture
 
 - An NGINX container serves HTTP traffic on port 8080 and uses a PHP-FPM container to run the PHP scripts.
-
+- php uses the MySQL db to handle database access by calling `db-svc` on the port specified in the `.env` file.
 
 ## Prerequisites
 
@@ -21,16 +21,23 @@ This is a local deployment to serve run server-side PHP scripts integrated with 
 - Tested with Git Bash
 
 ## Usage
-1. Initialize the file structure and volumes.
+1. Rename [db.env.template](db.env.template) to be called `db.env` and customize the username, password, and port
+
+2. Initialize the file structure and volumes.
     ```bash
     chmod +x scripts/init.sh;
     ./scripts/init.sh;
     ```
+    **Note**: be sure to rerun this if you want to delete the data for the db so that it will initialize on upping the stack.
 3. To up the compose stack:
     ```bash
-    docker compose up -d
+    docker compose up -d;
     ```
-4. To down the compose stack:
+4. Visit the homepage by going to [localhost:8080](http://localhost:8080) in the browser.
+
+5. Click the link you find on the homepage. You should see the PHP info with some purple coloring.
+
+6. To down the compose stack:
     ```bash
     docker compose down;
     ```
